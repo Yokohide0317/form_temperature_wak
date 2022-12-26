@@ -48,22 +48,21 @@ class sel_main:
         time.sleep(self.wait)
 
         # 2Facta認証
-        if not self.no_facta:
-            # click "mobile auth"
-            element = driver.find_element(By.CLASS_NAME, "table")
-            element.click()
-            time.sleep(self.wait)
+        # click "mobile auth"
+        element = driver.find_element(By.CLASS_NAME, "table")
+        element.click()
+        time.sleep(self.wait)
 
-            # Get and Enter 2facta
-            self.get_two_facta()
-            element = driver.find_element(By.XPATH, '//*[@id="idTxtBx_SAOTCC_OTC"]')
-            element.send_keys(self.two_auth_pass)
-            time.sleep(self.wait*2)
+        # Get and Enter 2facta
+        self.get_two_facta()
+        element = driver.find_element(By.XPATH, '//*[@id="idTxtBx_SAOTCC_OTC"]')
+        element.send_keys(self.two_auth_pass)
+        time.sleep(self.wait*2)
 
-            # Click Enter
-            element = driver.find_element(By.XPATH, '//*[@id="idSubmit_SAOTCC_Continue"]')
-            element.click()
-            time.sleep(self.wait+2)
+        # Click Enter
+        element = driver.find_element(By.XPATH, '//*[@id="idSubmit_SAOTCC_Continue"]')
+        element.click()
+        time.sleep(self.wait+2)
 
         # Stay signin -> No
         element = driver.find_element(By.ID, "idBtn_Back")
