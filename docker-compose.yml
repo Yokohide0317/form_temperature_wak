@@ -1,0 +1,21 @@
+version: "3"
+services:
+  selenium:
+    image: selenium/standalone-firefox-debug:latest
+    ports:
+      - 4444
+      - 5900:5900
+    volumes:
+      - /dev/shm:/dev/shm
+    restart: always
+    
+  app:
+    build:
+      context: ./app
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./app:/app
+    environment:
+      SELENIUM_URL: http://selenium:4444/wd/hub
+    tty: true
+    restart: always
